@@ -22,7 +22,6 @@ pipeline {
       steps {
         script {
           sh '''
-          set -euxo pipefail
           docker rm -f app || true
           docker run -d -p 8000:80 --name jenkins $DOCKER_ID/$DOCKER_IMAGE:$DOCKER_TAG
           sleep 10
@@ -35,7 +34,6 @@ pipeline {
       steps {
         script {
           sh '''
-		  set -euxo pipefail
           curl -f http://localhost:8000/
           '''
         }
